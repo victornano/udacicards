@@ -11,12 +11,12 @@ export function getDecks() {
     .catch((err) => console.log(err))
 }
 // take in a single title argument and add it to the decks.
-export function saveDeck (title) {
+export function saveDeck (id, title) {
     return AsyncStorage.getItem(DECKS_STORAGE_KEY)
         .then((results) => {
             const newDeck = {
-                id: Math.random().toString(36).substr(-8),
-                title: title,
+                id,
+                title,
                 cards: []
             }
             if (results) {

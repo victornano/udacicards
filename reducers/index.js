@@ -6,7 +6,7 @@ function decks (state = [], action) {
       return action.decks
     case ADD_DECK :
       const newDeck = {
-        id: Math.random().toString(36).substr(-8),
+        id: action.id,
         title: action.title,
         cards: []
       }

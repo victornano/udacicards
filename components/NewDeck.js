@@ -19,17 +19,18 @@ class NewDeck extends Component {
     submitDeck = () => {
         const {title} = this.state
         if (title) {
+            const id = Math.random().toString(36).substr(-8)
             // Redux dispatch
-            this.props.dispatch(addDeck(title))
+            this.props.dispatch(addDeck(id, title))
             // Async Storage
-            saveDeck(title)
+            saveDeck(id, title)
             // Clear state
             this.setState(() => ({
                 title: '',
                 showRequired: false
             }))
             // Navigate Back
-            this.props.navigation.navigate('Decks')
+            this.props.navigation.navigate('DeckDetail',{ deckId: id, title })
         }
         else{
             this.setState(() => ({
